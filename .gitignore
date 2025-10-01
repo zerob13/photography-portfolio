@@ -1,0 +1,9 @@
+node_modules
+.DS_Store
+dist
+.vscode/
+.env.local
+
+# Editor directories and files
+.idea
+*.log

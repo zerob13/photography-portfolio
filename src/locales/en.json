@@ -1,0 +1,56 @@
+{
+  "brand": {
+    "title": "Portfolio"
+  },
+  "navigation": {
+    "gallery": "Gallery",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "footer": {
+    "copy": "© 2024 Li Mu Photography. All rights reserved."
+  },
+  "gallery": {
+    "years": "Years",
+    "allYears": "All",
+    "title": "Selected Works",
+    "subtitle": "A curated collection of journeys, light and fleeting moments captured around the globe.",
+    "loadMore": "Load more"
+  },
+  "detail": {
+    "back": "Back to gallery",
+    "date": "Captured on",
+    "camera": "Camera",
+    "lens": "Lens",
+    "aperture": "Aperture",
+    "shutter": "Shutter"
+  },
+  "about": {
+    "title": "About the Photographer",
+    "subtitle": "For more than a decade, I have woven light and emotion together to preserve the moments that vanish in a heartbeat.",
+    "storyTitle": "The story so far",
+    "story1": "Since 2010 I have travelled alone from the northern lights to the Sahara, from city nights to alpine star trails. Every press of the shutter is a dialogue with the world.",
+    "story2": "I believe photographs are vessels for memory and feeling. Through light, colour and composition I invite viewers to breathe with the work in the same slice of time.",
+    "highlightTitle": "Recent highlights",
+    "highlight1": "2023 – ‘Voyage’ series awarded IPA Professional Gold",
+    "highlight2": "2022 – Solo exhibition ‘Night & Light’ in London",
+    "highlight3": "Published in National Geographic and Condé Nast Traveler"
+  },
+  "contact": {
+    "title": "Contact & Commissions",
+    "subtitle": "For media interviews, commercial assignments or exhibition inquiries, please get in touch via email or the form below.",
+    "infoTitle": "Stay in touch",
+    "infoDescription": "I split my time between Shanghai and international locations. Meetings are available by appointment.",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "locationLabel": "Studio",
+    "locationValue": "Shanghai, China",
+    "form": {
+      "name": "Your name",
+      "email": "Email address",
+      "message": "Message",
+      "submit": "Send"
+    },
+    "toast": "Thank you for your message. I will reply soon!"
+  }
+}

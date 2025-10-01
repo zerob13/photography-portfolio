@@ -54,10 +54,10 @@ const { t } = useI18n();
 
 .bio,
 .highlights {
-  background-color: #f9f9f9;
-  border-radius: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 1.25rem;
   padding: 2.5rem;
-  box-shadow: 0 12px 30px rgba(31, 31, 31, 0.08);
+  border: 1px solid var(--border-color);
 }
 
 .bio p {

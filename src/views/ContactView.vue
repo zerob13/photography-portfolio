@@ -79,10 +79,10 @@ function submit() {
 
 .contact-info,
 .contact-form {
-  background-color: #f9f9f9;
-  border-radius: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 1.25rem;
   padding: 2.5rem;
-  box-shadow: 0 12px 30px rgba(31, 31, 31, 0.08);
+  border: 1px solid var(--border-color);
 }
 
 .contact-info ul {
@@ -122,15 +122,16 @@ button[type='submit'] {
   border-radius: 999px;
   border: none;
   background-color: var(--accent);
-  color: #463a32;
+  color: #1f232a;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 18px rgba(31, 35, 42, 0.08);
 }
 
 button[type='submit']:hover {
   transform: translateY(-2px);
-  background-color: #e6ccb6;
+  box-shadow: 0 10px 24px rgba(31, 35, 42, 0.12);
 }
 
 @media (max-width: 1024px) {

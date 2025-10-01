@@ -57,6 +57,6 @@ async function switchLocale(locale: SupportedLocale) {
 
 .language-option.active {
   background-color: var(--accent);
-  color: #463a32;
+  color: #1f232a;
 }
 </style>

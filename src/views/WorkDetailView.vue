@@ -92,11 +92,10 @@ function goBack() {
 }
 
 .detail-image {
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(244, 238, 231, 0.95));
-  border-radius: 1.5rem;
+  background: #f5f7fa;
+  border-radius: 1.25rem;
   overflow: hidden;
-  border: 1px solid rgba(215, 191, 174, 0.35);
-  box-shadow: 0 22px 48px rgba(195, 178, 157, 0.18);
+  border: 1px solid var(--border-color);
 }
 
 .detail-image img {
@@ -113,8 +112,9 @@ function goBack() {
 
 .detail-info h1 {
   font-size: 2rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.16em;
   margin: 0.5rem 0 0;
+  font-weight: 600;
 }
 
 .work-year {
@@ -131,7 +131,7 @@ function goBack() {
 
 .work-summary {
   margin: 0.75rem 0 0;
-  color: #655a4f;
+  color: #4c5463;
   line-height: 1.6;
 }
 
@@ -140,9 +140,9 @@ function goBack() {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem 2rem;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.75);
-  border-radius: 1.25rem;
-  border: 1px solid rgba(215, 191, 174, 0.35);
+  background: #ffffff;
+  border-radius: 1.15rem;
+  border: 1px solid var(--border-color);
 }
 
 .meta-item {
@@ -152,16 +152,16 @@ function goBack() {
 }
 
 .label {
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #b9afa0;
+  color: #b6bcc9;
 }
 
 .description {
   font-size: 0.95rem;
   line-height: 1.8;
-  color: #4b4239;
+  color: #1f232a;
 }
 
 .description :deep(p) {

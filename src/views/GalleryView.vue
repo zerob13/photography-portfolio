@@ -145,8 +145,8 @@ onBeforeUnmount(() => {
   gap: 2.5rem;
   min-height: 100vh;
   padding: 4rem clamp(1.5rem, 6vw, 4.5rem);
-  background: #f7f5f1;
-  color: #463f37;
+  background: #ffffff;
+  color: #1f232a;
 }
 
 .years {
@@ -154,7 +154,7 @@ onBeforeUnmount(() => {
   flex-direction: column;
   gap: 0.75rem;
   font-size: 0.95rem;
-  color: #7f7468;
+  color: var(--muted);
   position: sticky;
   top: 140px;
   align-self: start;
@@ -164,7 +164,7 @@ onBeforeUnmount(() => {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 0.75rem;
-  color: #b3aa9e;
+  color: #c2c7d3;
 }
 
 .year {
@@ -177,7 +177,7 @@ onBeforeUnmount(() => {
 
 .year.active,
 .year:hover {
-  color: #4d463f;
+  color: #1f232a;
   transform: translateX(2px);
 }
 
@@ -190,7 +190,7 @@ onBeforeUnmount(() => {
   width: 4px;
   height: 1.5rem;
   border-radius: 999px;
-  background: #c8beaf;
+  background: #d9dfe8;
 }
 
 .grid {
@@ -214,14 +214,14 @@ onBeforeUnmount(() => {
 .gallery-header p {
   margin: 0;
   max-width: 38rem;
-  color: #766d61;
+  color: var(--muted);
 }
 
 .eyebrow {
   font-size: 0.78rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: #b3aa9e;
+  color: #c2c7d3;
 }
 
 .masonry {

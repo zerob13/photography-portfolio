@@ -87,12 +87,19 @@ const currentLocale = () => (route.params.locale as Locale) ?? 'zh';
   display: block;
   overflow: hidden;
   position: relative;
-  background: #000000;
+  border-radius: 1.25rem;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease;
+}
+
+.photo-card:hover {
+  transform: translateY(-4px);
 }
 
 .image-wrapper {
   position: relative;
-  background: #111111;
+  background: #f5f7fa;
   overflow: hidden;
   aspect-ratio: 3 / 2;
 }
@@ -109,7 +116,7 @@ const currentLocale = () => (route.params.locale as Locale) ?? 'zh';
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(12px) saturate(1.02);
+  filter: blur(14px) saturate(1.02);
   transform: scale(1.02);
   transition: filter 0.6s ease, transform 0.6s ease;
 }
@@ -125,21 +132,21 @@ const currentLocale = () => (route.params.locale as Locale) ?? 'zh';
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  padding: 1.1rem 1.25rem 1.5rem;
-  color: #f4f1eb;
-  background: linear-gradient(180deg, rgba(7, 7, 7, 0) 0%, rgba(7, 7, 7, 0.82) 72%, rgba(7, 7, 7, 0.95) 100%);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+  padding: 1.1rem 1.25rem 1.35rem;
+  color: #1f232a;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.92) 70%, rgba(255, 255, 255, 1) 100%);
 }
 
 .photo-title {
-  font-size: 0.88rem;
-  letter-spacing: 0.12em;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 .photo-location {
   font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  opacity: 0.78;
+  letter-spacing: 0.05em;
+  color: var(--muted);
 }
 </style>

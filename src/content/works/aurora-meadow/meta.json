@@ -1,0 +1,29 @@
+{
+  "slug": "aurora-meadow",
+  "year": 2024,
+  "coverImage": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80",
+  "previewImage": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=75",
+  "thumbnail": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=420&q=70",
+  "orientation": "landscape",
+  "title": {
+    "zh": "极光草甸",
+    "en": "Aurora Meadow"
+  },
+  "location": {
+    "zh": "冰岛东部",
+    "en": "Eastern Iceland"
+  },
+  "summary": {
+    "zh": "晨雾还未散尽，草甸在初升太阳的映照下泛着银蓝色的光。",
+    "en": "Mist lifts as dawn paints the meadow in silver-blue light."
+  },
+  "shootingDate": "2024-04-15",
+  "exif": {
+    "camera": "Leica M10-P",
+    "lens": "Summicron-M 35mm f/2",
+    "focalLength": "35mm",
+    "aperture": "f/5.6",
+    "shutter": "1/125s",
+    "iso": "200"
+  }
+}

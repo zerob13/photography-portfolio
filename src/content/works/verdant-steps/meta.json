@@ -1,0 +1,29 @@
+{
+  "slug": "verdant-steps",
+  "year": 2020,
+  "coverImage": "https://images.unsplash.com/photo-1471623817296-01d0c0e6c4a5?auto=format&fit=crop&w=1800&q=80",
+  "previewImage": "https://images.unsplash.com/photo-1471623817296-01d0c0e6c4a5?auto=format&fit=crop&w=1200&q=75",
+  "thumbnail": "https://images.unsplash.com/photo-1471623817296-01d0c0e6c4a5?auto=format&fit=crop&w=420&q=70",
+  "orientation": "landscape",
+  "title": {
+    "zh": "翠绿梯田",
+    "en": "Verdant Steps"
+  },
+  "location": {
+    "zh": "元阳梯田",
+    "en": "Yuanyang Terraces"
+  },
+  "summary": {
+    "zh": "雨后梯田被薄雾缭绕，倒映着天空的青绿。",
+    "en": "Mist wraps the terraces after rain, mirroring the teal sky."
+  },
+  "shootingDate": "2020-07-08",
+  "exif": {
+    "camera": "Phase One IQ4",
+    "lens": "Schneider 55mm f/2.8",
+    "focalLength": "55mm",
+    "aperture": "f/11",
+    "shutter": "1/30s",
+    "iso": "50"
+  }
+}

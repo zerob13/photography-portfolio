@@ -1,0 +1,29 @@
+{
+  "slug": "silent-lake",
+  "year": 2017,
+  "coverImage": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1800&q=80",
+  "previewImage": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1200&q=75",
+  "thumbnail": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=420&q=70",
+  "orientation": "landscape",
+  "title": {
+    "zh": "寂静湖面",
+    "en": "Silent Lake"
+  },
+  "location": {
+    "zh": "加拿大班夫",
+    "en": "Banff, Canada"
+  },
+  "summary": {
+    "zh": "薄雾漂浮在湖面上，只有偶尔的雁鸣打破沉寂。",
+    "en": "Mist drifts over the lake; only distant geese break the hush."
+  },
+  "shootingDate": "2017-06-17",
+  "exif": {
+    "camera": "Canon EOS 5DS R",
+    "lens": "EF 24-70mm f/2.8L II",
+    "focalLength": "35mm",
+    "aperture": "f/9",
+    "shutter": "1/125s",
+    "iso": "100"
+  }
+}

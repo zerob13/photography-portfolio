@@ -1,0 +1,57 @@
+{
+  "brand": {
+    "title": "作品集"
+  },
+  "navigation": {
+    "gallery": "首页",
+    "about": "关于",
+    "contact": "联系"
+  },
+  "footer": {
+    "copy": "© 2024 摄影师李穆。保留所有权利。"
+  },
+  "gallery": {
+    "years": "拍摄年份",
+    "allYears": "全部",
+    "title": "作品集",
+    "subtitle": "精选影像来自世界各地的旅程、光线与瞬间，呈现摄影师与自然之间的对话。",
+    "loadMore": "加载更多"
+  },
+  "detail": {
+    "back": "返回作品集",
+    "date": "拍摄日期",
+    "camera": "机身",
+    "lens": "镜头",
+    "focalLength": "焦距",
+    "aperture": "光圈",
+    "shutter": "快门"
+  },
+  "about": {
+    "title": "关于摄影师",
+    "subtitle": "十余年旅途与拍摄经验，将光影与情绪融为一体，记录下那些稍纵即逝的瞬间。",
+    "storyTitle": "旅途中的故事",
+    "story1": "自 2010 年起，我踏上漫长的独行之旅。从北极光到撒哈拉沙漠，从城市夜色到高山星轨，每一次按下快门，都是与世界进行的一场对话。",
+    "story2": "我相信影像不仅是记录，更是情绪与记忆的容器。通过光线、色彩与构图，让观者与作品共同呼吸，沉浸在同一个时空。",
+    "highlightTitle": "近期成就",
+    "highlight1": "2023 年《行旅》系列获 IPA 国际摄影奖专业组金奖",
+    "highlight2": "2022 年在伦敦举办个展《夜与光》",
+    "highlight3": "作品发表于《国家地理》《旅行家》等刊物"
+  },
+  "contact": {
+    "title": "联系与合作",
+    "subtitle": "欢迎媒体采访、商业合作与艺术展览邀约。请通过邮件或表单与我取得联系。",
+    "infoTitle": "联系信息",
+    "infoDescription": "我常年往返于上海与各地拍摄，如需面对面会谈，可提前预约。",
+    "emailLabel": "邮箱",
+    "phoneLabel": "电话",
+    "locationLabel": "工作室",
+    "locationValue": "中国 · 上海",
+    "form": {
+      "name": "姓名",
+      "email": "邮箱",
+      "message": "留言内容",
+      "submit": "发送"
+    },
+    "toast": "感谢留言，我会尽快回复。"
+  }
+}

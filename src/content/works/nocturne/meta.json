@@ -1,0 +1,29 @@
+{
+  "slug": "nocturne",
+  "year": 2021,
+  "coverImage": "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=1500&h=1500&q=80",
+  "previewImage": "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=900&h=900&q=75",
+  "thumbnail": "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=420&h=420&q=70",
+  "orientation": "square",
+  "title": {
+    "zh": "夜曲",
+    "en": "Nocturne"
+  },
+  "location": {
+    "zh": "东京湾",
+    "en": "Tokyo Bay"
+  },
+  "summary": {
+    "zh": "海面被城市灯光染成深蓝，船只像无声的音符。",
+    "en": "City light turns the bay deep blue; ferries drift like silent notes."
+  },
+  "shootingDate": "2021-11-12",
+  "exif": {
+    "camera": "Sony A7R V",
+    "lens": "FE 24-70mm f/2.8 GM",
+    "focalLength": "50mm",
+    "aperture": "f/11",
+    "shutter": "30s",
+    "iso": "64"
+  }
+}

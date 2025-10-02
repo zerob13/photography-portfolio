@@ -22,6 +22,7 @@
     "date": "拍摄日期",
     "camera": "机身",
     "lens": "镜头",
+    "focalLength": "焦距",
     "aperture": "光圈",
     "shutter": "快门"
   },

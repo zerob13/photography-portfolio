@@ -43,10 +43,11 @@ const links = computed(() => [
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 2.5rem 0;
+  padding: 2.25rem 0;
   position: sticky;
   top: 0;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
   z-index: 10;
 }
 
@@ -71,7 +72,7 @@ const links = computed(() => [
 
 .nav-link.active,
 .nav-link:hover {
-  color: #1f1f1f;
+  color: #1f232a;
 }
 
 .nav-link.active::after {
@@ -81,7 +82,7 @@ const links = computed(() => [
   bottom: 0;
   width: 100%;
   height: 2px;
-  background-color: #1f1f1f;
+  background-color: var(--accent);
 }
 
 @media (max-width: 768px) {

@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import PhotoCard from '@/components/PhotoCard.vue';
 import { works, years } from '@/data/gallery';
 
 const { t } = useI18n();
 const activeYear = ref<'all' | number>('all');
-const visibleCount = ref(6);
+const INITIAL_BATCH = 10;
+const LOAD_STEP = 6;
+const visibleCount = ref(INITIAL_BATCH);
+const sentinel = ref<HTMLElement>();
+const observer = ref<IntersectionObserver>();
+let loadingMore = false;
 
 const sortedWorks = computed(() =>
   [...works].sort((a, b) => {
@@ -17,29 +22,83 @@ const sortedWorks = computed(() =>
   })
 );
 
-const filteredWorks = computed(() => {
-  const list = activeYear.value === 'all'
-    ? sortedWorks.value
-    : sortedWorks.value.filter((work) => work.year === activeYear.value);
-
-  return list.slice(0, visibleCount.value);
-});
-
-const totalMatching = computed(() =>
+const filteredWorks = computed(() => (
   activeYear.value === 'all'
-    ? sortedWorks.value.length
-    : sortedWorks.value.filter((work) => work.year === activeYear.value).length
-);
+    ? sortedWorks.value
+    : sortedWorks.value.filter((work) => work.year === activeYear.value)
+));
 
-const hasMore = computed(() => filteredWorks.value.length < totalMatching.value);
+const visibleWorks = computed(() => filteredWorks.value.slice(0, visibleCount.value));
+
+const hasMore = computed(() => visibleCount.value < filteredWorks.value.length);
+
+function loadMore() {
+  if (!hasMore.value) {
+    return;
+  }
+
+  visibleCount.value = Math.min(
+    visibleCount.value + LOAD_STEP,
+    filteredWorks.value.length
+  );
+}
+
+function resetVisibleCount() {
+  visibleCount.value = Math.min(INITIAL_BATCH, filteredWorks.value.length || INITIAL_BATCH);
+}
+
+function disconnectObserver() {
+  observer.value?.disconnect();
+  observer.value = undefined;
+}
+
+function createObserver() {
+  disconnectObserver();
+
+  if (!sentinel.value || !hasMore.value) {
+    return;
+  }
+
+  observer.value = new IntersectionObserver((entries) => {
+    const isIntersecting = entries.some((entry) => entry.isIntersecting);
+
+    if (!isIntersecting || loadingMore) {
+      return;
+    }
+
+    loadingMore = true;
+    loadMore();
+    requestAnimationFrame(() => {
+      loadingMore = false;
+    });
+  }, {
+    rootMargin: '40% 0px',
+    threshold: [0.1]
+  });
+
+  observer.value.observe(sentinel.value);
+}
 
 watch(activeYear, () => {
-  visibleCount.value = 6;
+  resetVisibleCount();
 });
 
-function showMore() {
-  visibleCount.value += 4;
-}
+watch(filteredWorks, () => {
+  resetVisibleCount();
+});
+
+watch([hasMore, sentinel], () => {
+  createObserver();
+});
+
+onMounted(() => {
+  resetVisibleCount();
+  createObserver();
+});
+
+onBeforeUnmount(() => {
+  disconnectObserver();
+});
 </script>
 
 <template>
@@ -67,15 +126,14 @@ function showMore() {
     </aside>
     <div class="grid">
       <header class="gallery-header">
+        <div class="eyebrow">{{ t('gallery.years') }}</div>
         <h1>{{ t('gallery.title') }}</h1>
         <p>{{ t('gallery.subtitle') }}</p>
       </header>
-      <div class="photo-grid">
-        <PhotoCard v-for="work in filteredWorks" :key="work.slug" :work="work" />
+      <div class="masonry">
+        <PhotoCard v-for="work in visibleWorks" :key="work.slug" :work="work" />
       </div>
-      <div v-if="hasMore" class="more">
-        <button type="button" @click="showMore">{{ t('gallery.loadMore') }}</button>
-      </div>
+      <div ref="sentinel" class="sentinel" aria-hidden="true"></div>
     </div>
   </section>
 </template>
@@ -83,9 +141,12 @@ function showMore() {
 <style scoped>
 .gallery {
   display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 3rem;
-  min-height: 70vh;
+  grid-template-columns: 180px 1fr;
+  gap: 2.5rem;
+  min-height: 100vh;
+  padding: 4rem clamp(1.5rem, 6vw, 4.5rem);
+  background: #ffffff;
+  color: #1f232a;
 }
 
 .years {
@@ -95,7 +156,7 @@ function showMore() {
   font-size: 0.95rem;
   color: var(--muted);
   position: sticky;
-  top: 120px;
+  top: 140px;
   align-self: start;
 }
 
@@ -103,20 +164,21 @@ function showMore() {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 0.75rem;
-  color: #b0b0b0;
+  color: #c2c7d3;
 }
 
 .year {
   text-align: left;
   color: inherit;
-  padding: 0.25rem 0;
+  padding: 0.15rem 0;
   position: relative;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .year.active,
 .year:hover {
-  color: #1f1f1f;
+  color: #1f232a;
+  transform: translateX(2px);
 }
 
 .year.active::before {
@@ -128,13 +190,13 @@ function showMore() {
   width: 4px;
   height: 1.5rem;
   border-radius: 999px;
-  background-color: #1f1f1f;
+  background: #d9dfe8;
 }
 
 .grid {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 .gallery-header {
@@ -144,66 +206,73 @@ function showMore() {
 }
 
 .gallery-header h1 {
-  font-size: 2rem;
+  font-size: clamp(2rem, 3vw + 1rem, 3.5rem);
   letter-spacing: 0.18em;
   margin: 0;
 }
 
 .gallery-header p {
   margin: 0;
-  max-width: 32rem;
+  max-width: 38rem;
   color: var(--muted);
 }
 
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: var(--gallery-gap);
+.eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #c2c7d3;
 }
 
-.more {
-  text-align: center;
-  margin-top: 1rem;
+.masonry {
+  column-width: 300px;
+  column-gap: 0;
 }
 
-.more button {
-  padding: 0.75rem 2.5rem;
-  border-radius: 999px;
-  border: 1px solid var(--border-color);
-  background-color: var(--surface);
-  transition: background-color 0.2s ease;
+.masonry :deep(.photo-card-container) {
+  margin-bottom: 0;
 }
 
-.more button:hover {
-  background-color: #1f1f1f;
-  color: #fff;
+.sentinel {
+  height: 1px;
 }
 
 @media (max-width: 1024px) {
   .gallery {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 3rem clamp(1.25rem, 6vw, 3rem);
   }
 
   .years {
     position: static;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
+    gap: 0.75rem 1.5rem;
     justify-content: flex-start;
   }
 
   .year::before {
     display: none;
   }
+
+  .masonry {
+    column-width: 260px;
+  }
 }
 
 @media (max-width: 768px) {
   .gallery-header h1 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    letter-spacing: 0.18em;
   }
 
-  .photo-grid {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  .gallery-header p {
+    font-size: 0.95rem;
+  }
+
+  .masonry {
+    column-width: 200px;
   }
 }
 </style>

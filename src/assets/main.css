@@ -1,14 +1,31 @@
+@font-face {
+  font-family: 'MiSans';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://cdn.cnbj1.fds.api.mi-img.com/miui-webfont/MiSans/MiSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'MiSans';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://cdn.cnbj1.fds.api.mi-img.com/miui-webfont/MiSans/MiSans-Semibold.woff2') format('woff2');
+}
+
 :root {
-  color: #1f1f1f;
-  background-color: #f7f7f7;
-  font-family: 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  color: #1f232a;
+  background-color: #ffffff;
+  font-family: 'MiSans', 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   line-height: 1.5;
   font-weight: 400;
   --max-content-width: 1200px;
   --gallery-gap: 1.5rem;
-  --muted: #8a8a8a;
+  --muted: #7c818d;
   --surface: #ffffff;
-  --border-color: #e6e6e6;
+  --border-color: #e6e8ee;
+  --accent: #f0e6d8;
 }
 
 * {
@@ -18,7 +35,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--surface);
+  background: #ffffff;
   color: inherit;
 }
 

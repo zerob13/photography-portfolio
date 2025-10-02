@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
+import { computed, ref, onMounted, onBeforeUnmount, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import type { Work } from '@/data/gallery';
-
-type Locale = 'zh' | 'en';
+import type { Work, Locale } from '@/data/gallery';
 
 const props = defineProps<{ work: Work }>();
 
@@ -13,6 +11,9 @@ const isLoaded = ref(false);
 const observer = ref<IntersectionObserver>();
 const container = ref<HTMLElement>();
 const activeSrc = ref(props.work.previewImage);
+const orientationClass = computed(
+  () => `orientation-${props.work.orientation ?? 'landscape'}`
+);
 
 function loadFullImage() {
   const image = new Image();
@@ -61,7 +62,7 @@ const currentLocale = () => (route.params.locale as Locale) ?? 'zh';
       :to="{ name: 'work-detail', params: { slug: work.slug, locale: currentLocale() } }"
       class="photo-card"
     >
-      <div class="image-wrapper" :class="{ loaded: isLoaded }">
+      <div class="image-wrapper" :class="[orientationClass, { loaded: isLoaded }]">
         <img
           :src="activeSrc"
           :alt="work.title[currentLocale()]"
@@ -78,62 +79,74 @@ const currentLocale = () => (route.params.locale as Locale) ?? 'zh';
 </template>
 
 <style scoped>
+
 .photo-card-container {
   display: block;
+  break-inside: avoid;
 }
 
 .photo-card {
   display: block;
-  background-color: var(--surface);
-  border-radius: 1.25rem;
-  overflow: hidden;
-  box-shadow: 0 14px 32px rgba(31, 31, 31, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.photo-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(31, 31, 31, 0.12);
+  position: relative;
+  color: inherit;
 }
 
 .image-wrapper {
   position: relative;
-  padding-bottom: 130%;
-  background: #f0f0f0;
+  background: #f6f7f9;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+}
+
+.image-wrapper.orientation-portrait {
+  aspect-ratio: 2 / 3;
+}
+
+.image-wrapper.orientation-square {
+  aspect-ratio: 1 / 1;
 }
 
 .image-wrapper img {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(12px);
+  filter: blur(14px) saturate(1.02);
   transform: scale(1.02);
-  transition: filter 0.6s ease, transform 0.6s ease;
+  transition: filter 0.5s ease, transform 0.5s ease;
 }
 
 .image-wrapper.loaded img {
-  filter: blur(0);
+  filter: blur(0) saturate(1);
   transform: scale(1);
 }
 
 .photo-meta {
+  position: absolute;
+  inset: auto 0 0;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  padding: 1.25rem 1.5rem 1.75rem;
+  gap: 0.3rem;
+  padding: 1rem 1.15rem 1.25rem;
+  color: #1f232a;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.88) 60%,
+    rgba(255, 255, 255, 0.96) 78%,
+    #ffffff 100%
+  );
 }
 
 .photo-title {
-  font-size: 1rem;
-  letter-spacing: 0.08em;
+  font-size: 0.92rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 .photo-location {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
   color: var(--muted);
 }
 </style>

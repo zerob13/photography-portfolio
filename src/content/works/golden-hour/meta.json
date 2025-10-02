@@ -1,0 +1,29 @@
+{
+  "slug": "golden-hour",
+  "year": 2022,
+  "coverImage": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1300&h=1700&q=80",
+  "previewImage": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&h=1200&q=75",
+  "thumbnail": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=420&h=560&q=70",
+  "orientation": "portrait",
+  "title": {
+    "zh": "金色时刻",
+    "en": "Golden Hour"
+  },
+  "location": {
+    "zh": "托斯卡纳丘陵",
+    "en": "Tuscan Hills"
+  },
+  "summary": {
+    "zh": "夕阳绕过橄榄树林，温暖的光线刻画出柔和的山谷。",
+    "en": "Sunset slips past olive groves, etching the valley in warmth."
+  },
+  "shootingDate": "2022-05-21",
+  "exif": {
+    "camera": "Fujifilm GFX 100S",
+    "lens": "GF 80mm f/1.7",
+    "focalLength": "80mm",
+    "aperture": "f/4",
+    "shutter": "1/160s",
+    "iso": "160"
+  }
+}

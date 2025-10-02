@@ -26,9 +26,29 @@ To add a new piece, duplicate an existing folder, adjust `meta.json`, and write 
 
 ## Photographs & assets
 
-The project currently points to remote placeholder imagery so the gallery works without bundling large files. When you're ready to publish your own photographs:
+Large originals live outside the regular Git history to avoid bloat and missing-object errors. The repository ships with a ready-to-use Git LFS configuration (`.gitattributes`) that tracks everything inside `public/images/` and any binary files placed next to the work metadata folders.
 
-1. Add them to an object store or CDN and update the `coverImage`, `previewImage`, and `thumbnail` fields inside each `meta.json`.
-2. (Optional) Re-enable Git LFS if you prefer to keep assets in this repository—track your desired extensions and run the usual `git lfs install` / `git lfs pull` workflow during development and deployment.
+To start working with your own photographs:
 
-Keeping heavy assets outside of the repository avoids failed builds when LFS is unavailable and keeps the starter lightweight.
+1. Install and initialise Git LFS once on every machine:
+
+   ```bash
+   brew install git-lfs # or your package manager
+   git lfs install
+   ```
+
+2. Drop your processed web assets into `public/images/<collection>/<file>.jpg` (or `png`, `webp`, `avif`). These paths are referenced by `coverImage`, `previewImage`, and `thumbnail` inside each `meta.json`. Because of the `.gitattributes` rules they will automatically be committed via LFS—no extra `git lfs track` command is required.
+
+3. When collaborating or deploying (for example on Cloudflare Pages), make sure the build step pulls the binaries before running `npm run build`:
+
+   ```bash
+   git lfs fetch --all
+   git lfs pull
+   npm run build
+   ```
+
+   On Cloudflare Pages you can prepend the build command with `git lfs pull` in the project settings to guarantee that every deployment downloads the assets before Vite starts bundling.
+
+4. If you prefer to host images on an external CDN instead, simply update the paths in `meta.json` to point to absolute URLs. LFS will ignore remote links so no additional configuration is needed.
+
+The included `public/images/.gitkeep` placeholder keeps the directory under version control until real images are added. Remove it once your gallery is populated.

@@ -37,13 +37,15 @@ const { t } = useI18n();
 
 .page-header h1 {
   margin: 0;
-  font-size: 2.2rem;
-  letter-spacing: 0.16em;
+  font-size: 1.9rem;
+  letter-spacing: 0.08em;
+  font-weight: 500;
 }
 
 .page-header p {
-  max-width: 38rem;
+  max-width: 36rem;
   color: var(--muted);
+  line-height: 1.7;
 }
 
 .about-grid {

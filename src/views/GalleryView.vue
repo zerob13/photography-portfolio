@@ -202,24 +202,26 @@ onBeforeUnmount(() => {
 .gallery-header {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .gallery-header h1 {
-  font-size: clamp(2rem, 3vw + 1rem, 3.5rem);
-  letter-spacing: 0.18em;
   margin: 0;
+  font-size: clamp(1.75rem, 2.4vw + 1rem, 3rem);
+  letter-spacing: 0.08em;
+  font-weight: 500;
 }
 
 .gallery-header p {
   margin: 0;
-  max-width: 38rem;
+  max-width: 36rem;
   color: var(--muted);
+  line-height: 1.7;
 }
 
 .eyebrow {
-  font-size: 0.78rem;
-  letter-spacing: 0.32em;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #c2c7d3;
 }

@@ -26,7 +26,7 @@ To add a new piece, duplicate an existing folder, adjust `meta.json`, and write 
 
 ## Photographs & assets
 
-Large originals live outside the regular Git history to avoid bloat and missing-object errors. The repository ships with a ready-to-use Git LFS configuration (`.gitattributes`) that tracks everything inside `public/images/` and any binary files placed next to the work metadata folders.
+Large originals live outside the regular Git history to avoid bloat and missing-object errors. The repository ships with a ready-to-use Git LFS configuration (`.gitattributes`) that tracks JPEG/PNG/WebP/AVIF assets inside `public/images/` and any binary files placed next to the work metadata folders.
 
 To start working with your own photographs:
 
@@ -37,7 +37,7 @@ To start working with your own photographs:
    git lfs install
    ```
 
-2. Drop your processed web assets into `public/images/<collection>/<file>.jpg` (or `png`, `webp`, `avif`). These paths are referenced by `coverImage`, `previewImage`, and `thumbnail` inside each `meta.json`. Because of the `.gitattributes` rules they will automatically be committed via LFS—no extra `git lfs track` command is required.
+2. Drop your processed web assets into `public/images/<collection>/<file>.jpg` (or `png`, `webp`, `avif`). These paths are referenced by `coverImage`, `previewImage`, and `thumbnail` inside each `meta.json`. Because of the `.gitattributes` rules they will automatically be committed via LFS—no extra `git lfs track` command is required as long as the files use those extensions.
 
 3. When collaborating or deploying (for example on Cloudflare Pages), make sure the build step pulls the binaries before running `npm run build`:
 
@@ -51,4 +51,4 @@ To start working with your own photographs:
 
 4. If you prefer to host images on an external CDN instead, simply update the paths in `meta.json` to point to absolute URLs. LFS will ignore remote links so no additional configuration is needed.
 
-The included `public/images/.gitkeep` placeholder keeps the directory under version control until real images are added. Remove it once your gallery is populated.
+The included `public/images/.gitkeep` placeholder keeps the directory under version control until real images are added. It is a normal text file (not LFS tracked), so feel free to delete it once your gallery is populated.

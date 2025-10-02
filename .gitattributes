@@ -1,4 +1,11 @@
 # Track photo assets via Git LFS so large binaries stay out of regular Git history
-public/images/**/* filter=lfs diff=lfs merge=lfs -text
-public/images/* filter=lfs diff=lfs merge=lfs -text
-src/content/works/**/*.{jpg,jpeg,png,webp,avif} filter=lfs diff=lfs merge=lfs -text
+public/images/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+public/images/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+public/images/**/*.png filter=lfs diff=lfs merge=lfs -text
+public/images/**/*.webp filter=lfs diff=lfs merge=lfs -text
+public/images/**/*.avif filter=lfs diff=lfs merge=lfs -text
+src/content/works/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+src/content/works/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+src/content/works/**/*.png filter=lfs diff=lfs merge=lfs -text
+src/content/works/**/*.webp filter=lfs diff=lfs merge=lfs -text
+src/content/works/**/*.avif filter=lfs diff=lfs merge=lfs -text

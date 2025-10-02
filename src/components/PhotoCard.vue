@@ -11,7 +11,9 @@ const isLoaded = ref(false);
 const observer = ref<IntersectionObserver>();
 const container = ref<HTMLElement>();
 const activeSrc = ref(props.work.previewImage);
-const orientationClass = computed(() => `orientation-${props.work.orientation ?? 'landscape'}`);
+const orientationClass = computed(
+  () => `orientation-${props.work.orientation ?? 'landscape'}`
+);
 
 function loadFullImage() {
   const image = new Image();
@@ -85,21 +87,13 @@ const currentLocale = () => (route.params.locale as Locale) ?? 'zh';
 
 .photo-card {
   display: block;
-  overflow: hidden;
   position: relative;
-  border-radius: 1.25rem;
-  background: #ffffff;
-  border: 1px solid var(--border-color);
-  transition: transform 0.3s ease;
-}
-
-.photo-card:hover {
-  transform: translateY(-4px);
+  color: inherit;
 }
 
 .image-wrapper {
   position: relative;
-  background: #f5f7fa;
+  background: #f6f7f9;
   overflow: hidden;
   aspect-ratio: 3 / 2;
 }
@@ -118,7 +112,7 @@ const currentLocale = () => (route.params.locale as Locale) ?? 'zh';
   object-fit: cover;
   filter: blur(14px) saturate(1.02);
   transform: scale(1.02);
-  transition: filter 0.6s ease, transform 0.6s ease;
+  transition: filter 0.5s ease, transform 0.5s ease;
 }
 
 .image-wrapper.loaded img {
@@ -131,15 +125,21 @@ const currentLocale = () => (route.params.locale as Locale) ?? 'zh';
   inset: auto 0 0;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  padding: 1.1rem 1.25rem 1.35rem;
+  gap: 0.3rem;
+  padding: 1rem 1.15rem 1.25rem;
   color: #1f232a;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.92) 70%, rgba(255, 255, 255, 1) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.88) 60%,
+    rgba(255, 255, 255, 0.96) 78%,
+    #ffffff 100%
+  );
 }
 
 .photo-title {
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
+  font-size: 0.92rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 600;
 }

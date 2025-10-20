@@ -1,19 +1,22 @@
 # Photography Portfolio
 
-Vue 3 + Vite powered photography portfolio with bilingual (中文 / English) support, lazy-loaded gallery grid and detail view designed for Cloudflare Pages deployment.
+Static, bilingual photography portfolio generator that outputs pure HTML and CSS pages. The site is created entirely at build time from the content and locale files in this repository—no client-side JavaScript is shipped.
 
-## Development
+## Getting started
 
 ```bash
 npm install
-npm run dev
-```
-
-## Build
-
-```bash
 npm run build
 ```
+
+Running `npm run build` clears the `dist/` directory and regenerates a static site with the following structure:
+
+- `index.html`, `about.html`, `contact.html`, `gallery/`, and `works/` – the default (Chinese) locale rendered at the site root.
+- `en/` – English equivalents of every gallery, detail, and informational page.
+- `assets/main.css` – shared stylesheet copied from `styles/main.css`.
+- `fonts/` and `images/` – copied verbatim from `public/`.
+
+Deploy the contents of `dist/` to any static file host.
 
 ## Content structure
 
@@ -22,33 +25,14 @@ Each photograph lives in `src/content/works/<slug>/` and consists of:
 - `meta.json` — shared metadata, image paths, EXIF block, and bilingual title/location/summary fields.
 - `zh.md` and `en.md` — locale-specific Markdown narratives rendered on the detail page.
 
-To add a new piece, duplicate an existing folder, adjust `meta.json`, and write the Markdown files in both languages. The gallery and detail views load the new work automatically—no extra TypeScript edits are required as long as the slug in `meta.json` matches the folder name.
+To add a new piece, duplicate an existing folder, adjust `meta.json`, and write the Markdown files in both languages. The build script automatically discovers new works and generates the gallery and detail pages.
 
-## Photographs & assets
+## Localisation
 
-Large originals live outside the regular Git history to avoid bloat and missing-object errors. The repository ships with a ready-to-use Git LFS configuration (`.gitattributes`) that tracks JPEG/PNG/WebP/AVIF assets inside `public/images/` and any binary files placed next to the work metadata folders.
+Translations live in `src/locales/<locale>.json`. Update these files to tweak navigation labels, static copy, and section headings. Every locale listed in `SUPPORTED_LOCALES` inside `scripts/generate-static.mjs` receives its own set of pages during the build.
 
-To start working with your own photographs:
+## Assets
 
-1. Install and initialise Git LFS once on every machine:
+Static assets such as fonts and shared imagery reside in `public/`. They are copied directly into the output folder, so reference them using absolute paths like `/fonts/...` or relative paths starting from the site root in your metadata.
 
-   ```bash
-   brew install git-lfs # or your package manager
-   git lfs install
-   ```
-
-2. Drop your processed web assets into `public/images/<collection>/<file>.jpg` (or `png`, `webp`, `avif`). These paths are referenced by `coverImage`, `previewImage`, and `thumbnail` inside each `meta.json`. Because of the `.gitattributes` rules they will automatically be committed via LFS—no extra `git lfs track` command is required as long as the files use those extensions.
-
-3. When collaborating or deploying (for example on Cloudflare Pages), make sure the build step pulls the binaries before running `npm run build`:
-
-   ```bash
-   git lfs fetch --all
-   git lfs pull
-   npm run build
-   ```
-
-   On Cloudflare Pages you can prepend the build command with `git lfs pull` in the project settings to guarantee that every deployment downloads the assets before Vite starts bundling.
-
-4. If you prefer to host images on an external CDN instead, simply update the paths in `meta.json` to point to absolute URLs. LFS will ignore remote links so no additional configuration is needed.
-
-The included `public/images/.gitkeep` placeholder keeps the directory under version control until real images are added. It is a normal text file (not LFS tracked), so feel free to delete it once your gallery is populated.
+Large photography assets can continue to be stored outside of Git or tracked with Git LFS depending on your workflow. Update the URLs inside `meta.json` to point to either local `public/images/...` files or remote CDN locations.
